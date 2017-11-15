@@ -1,0 +1,41 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-api
+  labels:
+    app: order-api
+spec:
+  ports:
+    - port: 3001
+      protocol: TCP
+      targetPort: 3001
+  selector:
+    app: order-api
+  type: LoadBalancer
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: order-api
+  labels:
+    app: order-api
+spec:
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: order-api
+    spec:
+      containers:
+        - image: anthonyamanse/order-api:1.0
+          name: order-api
+          env:
+            - name: SLACK_WEBHOOK
+              value: ''
+          ports:
+            - containerPort: 3001
+          resources:
+            requests:
+              cpu: 50m

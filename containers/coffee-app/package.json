@@ -1,0 +1,24 @@
+{
+  "name": "simpleordercoffee",
+  "main": "app.js",
+  "description": "A simple order coffee app.",
+  "version": "1.0.0",
+  "private": false,
+  "engines": {
+    "node": "6.*"
+  },
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AnthonyAmanse/kubernetes-order-coffee"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.x",
+    "request": "^2.83.x",
+    "express": "^4.15.x"
+  },
+  "author": "Anthony Amanse",
+  "license": "Apache-2.0"
+}

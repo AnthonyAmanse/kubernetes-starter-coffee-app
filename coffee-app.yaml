@@ -1,0 +1,38 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: coffee-app
+  labels:
+    app: coffee-app
+spec:
+  ports:
+    - port: 3000
+      protocol: TCP
+      targetPort: 3000
+  type: LoadBalancer
+  selector:
+    app: coffee-app
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: coffee-app
+  labels:
+    app: coffee-app
+spec:
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: coffee-app
+    spec:
+      containers:
+        - image: anthonyamanse/coffee-app:1.0
+          name: coffee-app
+          ports:
+            - containerPort: 3000
+          resources:
+            requests:
+              cpu: 50m
