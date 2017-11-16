@@ -4,7 +4,7 @@ kind: Service
 metadata:
   name: coffee-app
   labels:
-    app: coffee-app
+    app: frontend-service
 spec:
   ports:
     - port: 3000
@@ -17,9 +17,9 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: coffee-app
+  name: coffee-app-deployment
   labels:
-    app: coffee-app
+    app: frontend
 spec:
   strategy:
     type: Recreate
@@ -29,8 +29,8 @@ spec:
         app: coffee-app
     spec:
       containers:
-        - image: anthonyamanse/coffee-app:1.0
-          name: coffee-app
+        - image: anthonyamanse/coffee-app:1.1
+          name: nodejs-app
           ports:
             - containerPort: 3000
           resources:

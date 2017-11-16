@@ -84,6 +84,10 @@ while true; do curl -X POST -H 'Content-Type: application/json' -d '{ "mocha": "
 // Send load to the frontend
 //Ctrl + C to cancel
 while true; do curl -s http://169.46.74.114:3000 > /dev/null; done
+
+// Send load to frontend then ordering
+//Ctrl + C to cancel
+while true; do curl -X POST -H 'Content-Type: application/json' -d '{ "mocha": "1", "americano": "2", "espresso": "3", "latte": "4", "machhiato": "5" }' http://169.46.74.116:3000/order; done
 ```
 
 ## Debugging the Application

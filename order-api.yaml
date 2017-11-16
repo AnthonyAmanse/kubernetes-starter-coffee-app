@@ -4,7 +4,7 @@ kind: Service
 metadata:
   name: order-api
   labels:
-    app: order-api
+    app: backend-service
 spec:
   ports:
     - port: 3001
@@ -12,14 +12,13 @@ spec:
       targetPort: 3001
   selector:
     app: order-api
-  type: LoadBalancer
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: order-api
+  name: order-api-deployment
   labels:
-    app: order-api
+    app: backend
 spec:
   strategy:
     type: Recreate
@@ -30,7 +29,7 @@ spec:
     spec:
       containers:
         - image: anthonyamanse/order-api:1.0
-          name: order-api
+          name: nodejs-app
           env:
             - name: SLACK_WEBHOOK
               value: ''

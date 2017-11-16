@@ -30,6 +30,7 @@ app.post('/order', function(req,res) {
         console.log(body)
     }
   })
+  res.send("Ordered sent to Order API")
 
 
 })
